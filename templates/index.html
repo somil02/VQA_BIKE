@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixIquire</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">PixInquire: Visual Question Answering</h1>
+        <form class="form" method="POST" enctype="multipart/form-data">
+            <label for="image" class="label">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" class="input imgIn" required><br>
+            <img id="image-preview" class="image-preview" src="#" alt=" "><br><br>
+            <label for="question" class="label">Enter Question:</label>
+            <input type="text" id="question" name="question" class="input textIn" required><br><br>
+            <input type="submit" value="Predict" class="button">
+        </form>
+        {% if predicted_answer %}
+        <h2 class="predicted-answer">Predicted Answer: {{ predicted_answer }}</h2>
+        {% endif %}
+    </div>
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('image-preview');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        document.getElementById('image').addEventListener('change', previewImage);
+    </script>
+</body>
+</html>

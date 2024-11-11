@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* background-image: url("red.jpg");
+    background-position: center center;
+
+    background-size:contain;
+    background-repeat: no-repeat;  */
+    
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("no_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+a{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 12px;
+    margin-right: 12px;
+}
+
+a:hover{
+    color: rgb(75, 75, 75);
+}
